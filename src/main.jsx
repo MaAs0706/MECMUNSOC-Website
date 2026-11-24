@@ -150,6 +150,29 @@ function Hero() {
   </main>;
 }
 
-function App() { return <div className="page-shell"><Navbar/><Hero/><section id="the-society" className="below-fold"><p>CONVENING IDEAS SINCE 2012</p><h2>Diplomacy begins<br/><i>with a question.</i></h2></section></div>; }
+function ComposedHero() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  return <main className="composed-hero" id="home">
+    <h1 className="sr-only">MECMUN — A World of Ideas</h1>
+    <img className="composition-image" src="/mecmun-hero.jpg" alt="An emerald and antique-gold illustrated diplomatic assembly hall, with MECMUN branding and the message ‘A World of Ideas’." />
+    <a className="hotspot logo-hotspot" href="#home" aria-label="MECMUN home" />
+    <nav className="composition-nav" aria-label="Main navigation">
+      <a className="hotspot society-hotspot" href="#the-society" aria-label="The Society" />
+      <a className="hotspot committees-hotspot" href="#committees" aria-label="Committees" />
+      <a className="hotspot editions-hotspot" href="#past-editions" aria-label="Past Editions" />
+      <a className="hotspot team-hotspot" href="#core-team" aria-label="Core Team" />
+      <a className="hotspot gallery-hotspot" href="#gallery" aria-label="Gallery" />
+      <a className="hotspot contact-hotspot" href="#contact" aria-label="Contact" />
+    </nav>
+    <a className="hotspot cta-hotspot" href="#the-society" aria-label="Explore the Society" />
+    <div className="mobile-masthead">
+      <a href="#home" className="mobile-wordmark" aria-label="MECMUN home"><Emblem/><span><b>MECMUN</b><small>MODEL UNITED NATIONS SOCIETY</small></span></a>
+      <button className="mobile-menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'CLOSE' : 'MENU'} <span>{menuOpen ? '−' : '+'}</span></button>
+      {menuOpen && <nav className="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">{links.map(link => <a key={link} href={`#${link.toLowerCase().replaceAll(' ', '-')}`} onClick={() => setMenuOpen(false)}>{link}<span>↗</span></a>)}</nav>}
+    </div>
+  </main>;
+}
+
+function App() { return <div className="page-shell"><ComposedHero/><section id="the-society" className="below-fold"><p>CONVENING IDEAS SINCE 2012</p><h2>Diplomacy begins<br/><i>with a question.</i></h2></section></div>; }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);

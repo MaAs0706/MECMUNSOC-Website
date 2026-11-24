@@ -26,3 +26,24 @@
 .committee-banners{filter:drop-shadow(0 4px 4px rgba(0,0,0,.35))}.committee-banners g:nth-child(even){transform-origin:center;opacity:.85}.delegates path[fill=none]{stroke:#c48f49}.margin-note{position:absolute;z-index:2;color:#d7b273;font:italic 22px/1.05 'Cormorant Garamond',serif;text-shadow:0 2px 10px #06150f;opacity:.92}.note-left{left:5.8%;top:53%;transform:rotate(-8deg);display:flex;align-items:center;gap:12px}.note-stamp{width:39px;height:39px;border:1px solid #b37b3e;border-radius:50%;display:grid;place-items:center;color:#e4b766;font:500 16px 'Cormorant Garamond',serif;transform:rotate(8deg);outline:1px dashed #b37b3e;outline-offset:3px}.note-right{right:5.7%;top:67%;transform:rotate(7deg);display:grid;gap:8px;text-align:right}.note-rule{font:9px 'Manrope',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#d1a45b;border-top:1px solid #b37b3e;padding-top:7px}.hero-copy .cta{transition:transform .25s,box-shadow .25s,background .25s}.hero-copy .cta:hover{transform:translateY(-3px);box-shadow:0 8px 26px #0008;background:#712d20}.hero-copy .cta .arrow{display:inline-block;transition:transform .25s}.hero-copy .cta:hover .arrow{transform:translate(3px,-3px)}
 @media(max-width:900px){.margin-note{font-size:18px}.note-left{left:3%;top:60%}.note-right{right:3%;top:72%}}
 @media(max-width:700px){.margin-note{display:none}.committee-banners{opacity:.7}.hero-copy{top:19%}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.composed-hero{position:relative;width:min(100vw,calc(100svh * 1.777896));aspect-ratio:1672/941;margin:0 auto;overflow:hidden;background:#081c15;isolation:isolate}
+.composition-image{display:block;width:100%;height:100%;object-fit:fill}
+.hotspot{position:absolute;z-index:2;display:block;color:transparent;text-decoration:none;outline-offset:3px}
+.logo-hotspot{left:3.4%;top:2.3%;width:21%;height:9.6%}
+.composition-nav .hotspot{top:5.2%;height:4.3%}.society-hotspot{left:29.6%;width:8%}.committees-hotspot{left:40.2%;width:9%}.editions-hotspot{left:50.9%;width:9.4%}.team-hotspot{left:62.1%;width:8.4%}.gallery-hotspot{left:72.5%;width:7.8%}.contact-hotspot{left:81.3%;width:8.6%}
+.cta-hotspot{left:40.9%;top:66.5%;width:18.4%;height:6.2%}
+.hotspot:hover{background:rgba(238,190,113,.09);box-shadow:inset 0 -2px #e4b665}.hotspot:focus-visible{outline:2px solid #ffe2a2;background:rgba(238,190,113,.12)}
+.mobile-masthead{display:none}
+@media(max-width:700px){
+  .composed-hero{width:100vw;height:100svh;max-height:none;aspect-ratio:auto}
+  .composition-image{position:absolute;left:50%;top:0;width:auto;height:100%;max-width:none;transform:translateX(-50%)}
+  .composition-nav,.logo-hotspot{display:none}
+  .cta-hotspot{left:16%;top:66.5%;width:68%;height:8%}
+  .mobile-masthead{display:flex;position:absolute;z-index:4;inset:0 0 auto;height:82px;padding:12px 17px;align-items:center;justify-content:space-between;background:linear-gradient(180deg,#061b13 0%,#061b13 86%,rgba(6,27,19,.94) 100%);border-bottom:1px solid rgba(217,169,93,.5);color:#e9bd73}
+  .mobile-wordmark{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}.mobile-wordmark .emblem{width:38px;height:38px}.mobile-wordmark span{display:grid;gap:2px}.mobile-wordmark b{font:500 25px/.9 'Cormorant Garamond',serif;letter-spacing:.05em}.mobile-wordmark small{font:7px 'Manrope',sans-serif;letter-spacing:.1em}
+  .mobile-menu-button{border:1px solid rgba(217,169,93,.7);background:transparent;color:#e9bd73;padding:8px 10px;font:10px 'Manrope',sans-serif;letter-spacing:.12em}.mobile-menu-button span{font-size:14px;margin-left:8px}
+  .mobile-nav{position:absolute;top:81px;left:0;right:0;background:#071a13;padding:10px 19px 18px;border-bottom:1px solid #b88648;box-shadow:0 12px 24px #0008;display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+  .mobile-nav a{display:flex;justify-content:space-between;align-items:center;padding:12px 0;color:#e9bd73;text-decoration:none;text-transform:uppercase;font:11px 'Cormorant Garamond',serif;letter-spacing:.1em;border-bottom:1px solid rgba(217,169,93,.24)}
+  .mobile-nav a span{color:#b67d45}
+}
