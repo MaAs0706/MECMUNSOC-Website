@@ -142,37 +142,13 @@ function Artwork() {
 
 function Hero() {
   return <main id="home" className="hero">
-    <HallArtwork />
-    <div className="hero-copy"><div className="hero-kicker"><span/> GOVERNMENT MODEL ENGINEERING COLLEGE · KOCHI <span/></div><h1>MECMUN</h1><p className="tagline">A World of Ideas.</p><p className="motto">DIALOGUE <b>·</b> DIPLOMACY <b>·</b> PERSPECTIVE</p><div className="hero-ornament">— ◇ — ✧ — ◇ —</div><a className="cta" href="#the-society"><span>Explore the Society</span><span className="arrow">↗</span></a></div>
-    <div className="margin-note note-left"><span className="note-stamp">K</span><span>Bring your<br/>curiosity.</span></div>
-    <div className="margin-note note-right"><span>One room.<br/>Many worlds.</span><span className="note-rule">✦ &nbsp; Kochi, India</span></div>
+    <img className="hero-background" src="/mecmun-globe-background.jpg" alt="" aria-hidden="true" />
+    <Navbar />
+    <div className="hero-copy"><div className="hero-kicker"><span/> MODEL UNITED NATIONS SOCIETY · KOCHI, INDIA <span/></div><h1>MECMUN</h1><p className="tagline">A World <i>of</i> Ideas.</p><p className="motto">DIALOGUE <b>·</b> DIPLOMACY <b>·</b> PERSPECTIVE</p><div className="hero-ornament">— ◇ — ✧ — ◇ —</div><a className="cta" href="#the-society"><span>Explore the Society</span><span className="arrow">↗</span></a></div>
     <div className="hero-foot"><span>ESTD. MECMUN</span><i/><span className="foot-seal">✧</span><i/><span>KOCHI · INDIA</span></div>
   </main>;
 }
 
-function ComposedHero() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  return <main className="composed-hero" id="home">
-    <h1 className="sr-only">MECMUN — A World of Ideas</h1>
-    <img className="composition-image" src="/mecmun-hero.jpg" alt="An emerald and antique-gold illustrated diplomatic assembly hall, with MECMUN branding and the message ‘A World of Ideas’." />
-    <a className="hotspot logo-hotspot" href="#home" aria-label="MECMUN home" />
-    <nav className="composition-nav" aria-label="Main navigation">
-      <a className="hotspot society-hotspot" href="#the-society" aria-label="The Society" />
-      <a className="hotspot committees-hotspot" href="#committees" aria-label="Committees" />
-      <a className="hotspot editions-hotspot" href="#past-editions" aria-label="Past Editions" />
-      <a className="hotspot team-hotspot" href="#core-team" aria-label="Core Team" />
-      <a className="hotspot gallery-hotspot" href="#gallery" aria-label="Gallery" />
-      <a className="hotspot contact-hotspot" href="#contact" aria-label="Contact" />
-    </nav>
-    <a className="hotspot cta-hotspot" href="#the-society" aria-label="Explore the Society" />
-    <div className="mobile-masthead">
-      <a href="#home" className="mobile-wordmark" aria-label="MECMUN home"><Emblem/><span><b>MECMUN</b><small>MODEL UNITED NATIONS SOCIETY</small></span></a>
-      <button className="mobile-menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'CLOSE' : 'MENU'} <span>{menuOpen ? '−' : '+'}</span></button>
-      {menuOpen && <nav className="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">{links.map(link => <a key={link} href={`#${link.toLowerCase().replaceAll(' ', '-')}`} onClick={() => setMenuOpen(false)}>{link}<span>↗</span></a>)}</nav>}
-    </div>
-  </main>;
-}
-
-function App() { return <div className="page-shell"><ComposedHero/><section id="the-society" className="below-fold"><p>CONVENING IDEAS SINCE 2012</p><h2>Diplomacy begins<br/><i>with a question.</i></h2></section></div>; }
+function App() { return <div className="page-shell"><Hero/><section id="the-society" className="below-fold"><p>CONVENING IDEAS SINCE 2012</p><h2>Diplomacy begins<br/><i>with a question.</i></h2></section></div>; }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
