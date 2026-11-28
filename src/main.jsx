@@ -2,22 +2,22 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const links = ['The Society', 'Committees', 'Past Editions', 'Core Team', 'Gallery', 'Contact'];
+const CollegeBuildingViewer = React.lazy(() => import('./components/CollegeBuildingViewer.jsx'));
 
-function Emblem() {
-  return <svg className="emblem" viewBox="0 0 48 48" aria-hidden="true">
-    <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" strokeWidth=".8" />
-    <path d="M17 37q-13-11-6-25 8 7 8 17m12 8q13-11 6-25-8 7-8 17" fill="none" stroke="currentColor" strokeWidth="1.1"/>
-    <path d="M12 30q4-1 6 2m-7-8q5 0 8 3m-7-9q5 1 8 5m16 7q-4-1-6 2m7-8q-5 0-8 3m7-9q-5 1-8 5" fill="none" stroke="currentColor" strokeWidth=".75"/>
-    <path d="M24 12v24m-7-4h14l-2-2H19zm2-3h10l-2-2h-6zm2-3h6l-1-4h-4zm-3 12h12v2H18z" fill="none" stroke="currentColor" strokeWidth="1"/>
-    <path d="m21 13 3-4 3 4m-3-5v5" fill="none" stroke="currentColor" strokeWidth=".8"/>
-  </svg>;
-}
+const links = [
+  { label: 'Society', href: '#the-society' },
+  { label: 'Committees', href: '#committees' },
+  { label: 'Editions', href: '#editions' },
+  { label: 'Team', href: '#team' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Contact', href: '#contact' },
+];
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
   return <header className="nav-wrap">
-    <a className="brand" href="#home" aria-label="MECMUN home"><span className="crest"><Emblem /></span><span className="brand-copy"><b>MECMUN</b><small>MODEL UNITED NATIONS SOCIETY</small></span></a>
-    <nav aria-label="Main navigation"><button className="menu-toggle" aria-label="Open navigation" onClick={() => document.querySelector('.nav-links').classList.toggle('open')}>☰</button><ul className="nav-links">{links.map((link) => <li key={link}><a href={`#${link.toLowerCase().replaceAll(' ', '-')}`}>{link}</a></li>)}</ul></nav>
+    <a className="brand" href="#home" aria-label="MECMUN home"><span className="brand-copy"><b>MECMUN</b><small>MODEL UNITED NATIONS · MEC KOCHI</small></span></a>
+    <nav aria-label="Main navigation"><button className="menu-toggle" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>☰</button><ul className={`nav-links${menuOpen ? ' open' : ''}`}>{links.map(({label,href}) => <li key={label}><a href={href} onClick={() => setMenuOpen(false)}>{label}</a></li>)}</ul></nav>
   </header>;
 }
 
@@ -144,11 +144,14 @@ function Hero() {
   return <main id="home" className="hero">
     <img className="hero-background" src="/mecmun-globe-background.jpg" alt="" aria-hidden="true" />
     <Navbar />
-    <div className="hero-copy"><div className="hero-kicker"><span/> MODEL UNITED NATIONS SOCIETY · KOCHI, INDIA <span/></div><h1>MECMUN</h1><p className="tagline">A World <i>of</i> Ideas.</p><p className="motto">DIALOGUE <b>·</b> DIPLOMACY <b>·</b> PERSPECTIVE</p><div className="hero-ornament">— ◇ — ✧ — ◇ —</div><a className="cta" href="#the-society"><span>Explore the Society</span><span className="arrow">↗</span></a></div>
-    <div className="hero-foot"><span>ESTD. MECMUN</span><i/><span className="foot-seal">✧</span><i/><span>KOCHI · INDIA</span></div>
+    <div className="campus-heading"><p>GOVERNMENT MODEL ENGINEERING COLLEGE · KOCHI</p><h1>MECMUN</h1><span>A World of Ideas.</span></div>
+    <React.Suspense fallback={<div className="building-viewer" role="status"><span className="loading-arc"/><span>Preparing the campus view</span></div>}>
+      <CollegeBuildingViewer />
+    </React.Suspense>
+    <div className="campus-caption"><div><span>THE CAMPUS</span><p>Main academic building</p></div><a className="cta" href="#the-society">Meet the Society <span aria-hidden="true">↗</span></a></div>
   </main>;
 }
 
-function App() { return <div className="page-shell"><Hero/><section id="the-society" className="below-fold"><p>CONVENING IDEAS SINCE 2012</p><h2>Diplomacy begins<br/><i>with a question.</i></h2></section></div>; }
+function App() { return <div className="page-shell"><Hero/><section id="the-society" className="below-fold"><p>THE SOCIETY</p><h2>Model United Nations<br/><i>at MEC, Kochi.</i></h2><p className="society-copy">MECMUN is the Model United Nations Society at Government Model Engineering College in Kochi.</p></section></div>; }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
